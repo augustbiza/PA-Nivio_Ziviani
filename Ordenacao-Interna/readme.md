@@ -1,10 +1,14 @@
 # Algoritmos de Ordenação Interna
+## O que é ordenação interna?
+Quando os dados a serem ordenados cabem na memória principal(RAM) utiliza-se ordenação interna.
 ## Tipos
-- Selection
-- Insertion
+- Selection / Selection Parcial
+- Insertion / Insertion Parcial
 - Bubble
-- Quicksort
+- Quicksort / Quicksort Parcial
 - Mergesort
+- Shellsort
+- Heapsort / Heapsort Parcial
 
 ## Classificação: quando usar
 ### 1.Simples

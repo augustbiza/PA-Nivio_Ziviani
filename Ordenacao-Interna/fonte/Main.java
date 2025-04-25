@@ -12,13 +12,13 @@ class Ordenacao {
     }
     
     //SELECTION - Menor no início
-    public static void selection(int[] array, int n) {
+    public static void selection(int[] array, int tam) {
 
         long comp = 0, mov = 0;
 
-        for(int i = 0; i < n-1; i++) {
+        for(int i = 0; i < tam-1; i++) {
             int posMenor = i;
-            for(int j = i+1; j < n; j++) {
+            for(int j = i+1; j < tam; j++) {
                 if(array[j] < array[posMenor]) posMenor = j;
                 comp++;
             }
@@ -30,20 +30,23 @@ class Ordenacao {
         System.out.println("Selection\nComparações: " + comp + "\nMovimentações: " + mov + "\n");
     }
 
-    //INSERTION
-    public static void insertion(int[] array, int n) {
+    //INSERTION - 
+    public static void insertion(int[] array, int tam) {
 
-        for(int i = 1; i < n; i++) {
+        long comp = 0, mov = 0;
 
-            int aux = array[i];
+        for(int i = 1; i < tam; i++) {
+
+            int aux = array[i]; mov++;
             int j = i-1;
 
             while(j >= 0 && array[j] > aux) {
-                array[j+1] = array[j];
+                comp++;
+                array[j+1] = array[j]; mov++;
                 j--;
             }
 
-            array[j+1] = aux;
+            array[j+1] = aux; mov++;
         }
         System.out.println("Insertion\nComparações: " + comp + "\nMovimentações: " + mov + "\n");
     }
@@ -51,25 +54,25 @@ class Ordenacao {
 
 class Main {
 
-    public static void mostrar(int[] array, int n) {
+    public static void mostrar(int[] array, int tam) {
         System.out.print("[");
-        for(int i = 0; i < n; i++) {
-            if(i != n-1) System.out.print(array[i] + "|");
-            else System.out.print(array[i]);
+        for(int i = 0; i < tam-1; i++) {
+            System.out.print(array[i] + "|");
+            
         }
-        System.out.println("]\n");
+        System.out.println(array[tam-1] + "]\n");
     }
 
     public static void main(String[] args) {
 
         int[] array = new int[]{5,2,9,7,0,8,1,4,3,6};
-        int n = array.length;
+        int tam = array.length;
 
-        mostrar(array, n);
+        mostrar(array, tam);
 
-        //Ordenacao.selection(array, n);
-        Ordenacao.insertion(array, n);
+        //Ordenacao.selection(array, tam);
+        //Ordenacao.insertion(array, tam);
 
-        mostrar(array, n);
+        mostrar(array, tam);
     }
 }
