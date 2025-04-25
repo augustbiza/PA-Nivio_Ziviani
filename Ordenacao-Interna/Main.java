@@ -1,12 +1,17 @@
 class Ordenacao {
 
-    public static void swap(int[] array, int i, int j) {
+    public static void swapIndex(int[] array, int i, int j) {
         int aux = array[i];
         array[i] = array[j];
         array[j] = aux;
     }
+    public static void swapValue(int[] array, int i, int j) {
+        int aux = i;
+        i = j;
+        j = aux;
+    }
     
-    //Menor no início
+    //SELECTION - Menor no início
     public static void selection(int[] array, int n) {
 
         long comp = 0, mov = 0;
@@ -18,36 +23,30 @@ class Ordenacao {
                 comp++;
             }
 
-            swap(array, i, posMenor);
+            swapIndex(array, i, posMenor);
             mov += 3;
         }
 
-        System.out.println("Selection Padrão\nComparações: " + comp + "\nMovimentações: " + mov);
+        System.out.println("Selection\nComparações: " + comp + "\nMovimentações: " + mov + "\n");
     }
 
-    ///////////////////////////////////
-    public static int buscaPosMenor(int[] array, int n, int i) {
+    //INSERTION
+    public static void insertion(int[] array, int n) {
 
-        if(i == n-1) return i;
+        for(int i = 1; i < n; i++) {
 
-        int menor = buscaPosMenor(array, n, i + 1);
+            int aux = array[i];
+            int j = i-1;
 
-        return (array[i] < array[menor]) ? i : menor;
+            while(j >= 0 && array[j] > aux) {
+                array[j+1] = array[j];
+                j--;
+            }
+
+            array[j+1] = aux;
+        }
+        System.out.println("Insertion\nComparações: " + comp + "\nMovimentações: " + mov + "\n");
     }
-
-    public static void selectionRec(int[] array, int n, int i) {
-        
-        if(i >= n-1) return;
-
-        int menor = buscaPosMenor(array, n, i);
-
-        swap(array, i, menor);
-
-        selectionRec(array, n, i+1);        
-    }
-
-
-    ///////////////////////////////////
 }
 
 class Main {
@@ -69,8 +68,7 @@ class Main {
         mostrar(array, n);
 
         //Ordenacao.selection(array, n);
-        System.out.println("Selection Recursivo");
-        Ordenacao.selectionRec(array, n, 0);
+        Ordenacao.insertion(array, n);
 
         mostrar(array, n);
     }

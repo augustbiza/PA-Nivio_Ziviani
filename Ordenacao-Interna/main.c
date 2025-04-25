@@ -38,27 +38,7 @@ void selection(int* array, int n) {
     printf("Selection\nComparações: %ld\nMovimentações: %ld\n\n", comp, mov);
 }
 
-int buscaPosMenor(int* array, int n, int i) {
 
-    if(i == n-1) return i;
-
-    int menor = buscaPosMenor(array, n, i+1);
-
-    if(array[i] < array[menor]) return i;
-    else return menor;
-
-}
-
-void selectionRec(int* array, int n, int i) {
-
-    if(i >= n-1) return;
-
-    int menor = buscaPosMenor(array, n, i);
-
-    swap(&array[i], &array[menor]);
-
-    selectionRec(array, n, i+1);
-}
 
 
 

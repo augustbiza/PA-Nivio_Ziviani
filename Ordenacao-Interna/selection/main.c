@@ -103,6 +103,29 @@ void selectionPartial(int* array, int n, int k) {
     printf("Partial Selection - k = %d\nComparações: %ld\nMovimentações: %ld\n\n", k, comp, mov);
 }
 
+//Recursivo
+int buscaPosMenor(int* array, int n, int i) {
+
+    if(i == n-1) return i;
+
+    int menor = buscaPosMenor(array, n, i+1);
+
+    if(array[i] < array[menor]) return i;
+    else return menor;
+
+}
+
+void selectionRec(int* array, int n, int i) {
+
+    if(i >= n-1) return;
+
+    int menor = buscaPosMenor(array, n, i);
+
+    swap(&array[i], &array[menor]);
+
+    selectionRec(array, n, i+1);
+}
+
 //Maior no inicio
 void selectionInverseMax(int* array, int n) {
 

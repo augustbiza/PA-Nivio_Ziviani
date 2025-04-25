@@ -239,7 +239,27 @@ public static int buscaPosMenor(int[] array, int n, int i) {
 ```
 ### C
 ```c
+int buscaPosMenor(int* array, int n, int i) {
 
+    if(i == n-1) return i;
+
+    int menor = buscaPosMenor(array, n, i+1);
+
+    if(array[i] < array[menor]) return i;
+    else return menor;
+
+}
+
+void selectionRec(int* array, int n, int i) {
+
+    if(i >= n-1) return;
+
+    int menor = buscaPosMenor(array, n, i);
+
+    swap(&array[i], &array[menor]);
+
+    selectionRec(array, n, i+1);
+}
 ```
 
 ### Explicação Selection Recursivo
