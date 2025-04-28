@@ -18,44 +18,37 @@ void swap(int* a, int* b) {
 //SELECTION - Menor no início
 void selection(int* array, int tam) {
 
-    long comp = 0, mov = 0;
-
     for(int i = 0; i < tam-1; i++) {
 
         int posMenor = i;
 
         for(int j = i+1; j < tam; j++) {
             if(array[j] < array[posMenor]) posMenor = j;
-            comp++;
         }
 
         swap(&array[i], &array[posMenor]);
-        mov += 3;
     }
 
-    printf("Selection\nComparações: %ld\nMovimentações: %ld\n\n", comp, mov);
+    printf("Selection sort\n");
 }
 
 //INSERTION
 void insertion(int* array, int tam) {
 
-    long comp = 0, mov = 0;
-
     for(int i = 1; i < tam; i++) {
 
-        int aux = array[i]; mov++;
+        int aux = array[i]; 
         int j = i-1;
 
         while(j >= 0 && array[j] > aux) {
-            comp++; 
-            array[j+1] = array[j]; mov++;
+            array[j+1] = array[j];
             j--;
         }
 
-        array[j+1] = aux; mov++;
+        array[j+1] = aux; 
     }
 
-    printf("Insertion\nComparações: %ld\nMovimentações: %ld\n\n", comp, mov);
+    printf("Insertion sort\n");
 }
 
 //QUICKSORT
@@ -87,11 +80,11 @@ int main(void) {
     int array[] = {5,2,9,7,0,8,1,4,3,6};
     int tam = sizeof(array)/sizeof(array[0]);
 
+    printf("Array Inicial\n");
     mostrar(array, tam);
 
     //selection(array, tam);
-    //insertion(array, tam);
-    quicksort(array, 0, tam-1);
+    //insertion(array, tam); printf("Quicksort\n"); quicksort(array, 0, tam-1);
 
     mostrar(array, tam);
 

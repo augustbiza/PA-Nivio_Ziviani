@@ -1,54 +1,43 @@
 class Ordenacao {
 
-    public static void swapIndex(int[] array, int i, int j) {
+    public static void swap(int[] array, int i, int j) {
         int aux = array[i];
         array[i] = array[j];
         array[j] = aux;
     }
-    public static void swapValue(int[] array, int i, int j) {
-        int aux = i;
-        i = j;
-        j = aux;
-    }
+    
     
     //SELECTION - Menor no início
     public static void selection(int[] array, int tam) {
-
-        long comp = 0, mov = 0;
 
         for(int i = 0; i < tam-1; i++) {
             int posMenor = i;
             for(int j = i+1; j < tam; j++) {
                 if(array[j] < array[posMenor]) posMenor = j;
-                comp++;
             }
 
-            swapIndex(array, i, posMenor);
-            mov += 3;
+            swap(array, i, posMenor);
         }
 
-        System.out.println("Selection\nComparações: " + comp + "\nMovimentações: " + mov + "\n");
+        System.out.println("Selection sort");
     }
 
     //INSERTION - 
     public static void insertion(int[] array, int tam) {
 
-        long comp = 0, mov = 0;
-
         for(int i = 1; i < tam; i++) {
 
-            int aux = array[i]; mov++;
+            int aux = array[i];
             int j = i-1;
 
             while(j >= 0 && array[j] > aux) {
-                comp++;
-                array[j+1] = array[j]; mov++;
+                array[j+1] = array[j]; 
                 j--;
             }
 
-            array[j+1] = aux; mov++;
+            array[j+1] = aux;
         }
-        System.out.println("Insertion\nComparações: " + comp + "\nMovimentações: " + mov + "\n");
+        System.out.println("Insertion sort");
     }
 
     //QUICKSORT -
@@ -63,7 +52,7 @@ class Ordenacao {
             while(array[j] > pivo) j--;
 
             if(i <= j) {
-                swapIndex(array, i, j);
+                swap(array, i, j);
                 i++;
                 j--;
             }
@@ -90,11 +79,12 @@ class Main {
         int[] array = new int[]{5,2,9,7,0,8,1,4,3,6};
         int tam = array.length;
 
+        System.out.println("Array Inicial");
         mostrar(array, tam);
 
         //Ordenacao.selection(array, tam);
         //Ordenacao.insertion(array, tam);
-        Ordenacao.quicksort(array, 0, tam-1);
+        System.out.println("Quicksort"); Ordenacao.quicksort(array, 0, tam-1);
 
         mostrar(array, tam);
     }

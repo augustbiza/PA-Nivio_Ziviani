@@ -96,7 +96,8 @@ void selectionPartial(int* array, int n, int k) {
             comp++;
         }
 
-        swap(&array[i], &array[posMenor]);
+        //swap(&array[i], &array[j]);
+        swap(array+i, array+j);
         mov += 3;
     }
 
