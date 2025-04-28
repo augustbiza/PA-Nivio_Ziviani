@@ -50,6 +50,28 @@ class Ordenacao {
         }
         System.out.println("Insertion\nComparações: " + comp + "\nMovimentações: " + mov + "\n");
     }
+
+    //QUICKSORT -
+    public static void quicksort(int[] array, int inicio, int fim) {
+
+        int pivo = array[(inicio+fim)/2];
+        int i = inicio, j = fim;
+
+        while(i <= j) {
+
+            while(array[i] < pivo) i++;
+            while(array[j] > pivo) j--;
+
+            if(i <= j) {
+                swapIndex(array, i, j);
+                i++;
+                j--;
+            }
+        }
+
+        if(inicio < j) quicksort(array, inicio, j);
+        if(fim > i) quicksort(array, i, fim);
+    }
 }
 
 class Main {
@@ -72,6 +94,7 @@ class Main {
 
         //Ordenacao.selection(array, tam);
         //Ordenacao.insertion(array, tam);
+        Ordenacao.quicksort(array, 0, tam-1);
 
         mostrar(array, tam);
     }
