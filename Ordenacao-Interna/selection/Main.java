@@ -1,6 +1,21 @@
 // Algorimo de Ordenação Interna SELECTION e suas variações
 class Selection {
 
+    private int comp;
+    private int mov;
+
+    public Selection() {
+        this.comp = 0;
+        this.mov = 0;
+    }
+
+    public int getComp() {
+        return comp;
+    }
+    public int getMov() {
+        return mov;
+    }
+
     public static void swap(int[] array, int i, int j) {
         int aux = array[i];
         array[i] = array[j];
@@ -8,47 +23,37 @@ class Selection {
     }
     
     //PADRÃO = menor no inicio
-    public static void selection(int[] array, int n) {
-
-        long comp = 0, mov = 0;
+    public void selectionsort(int[] array, int n) {
 
         for(int i = 0; i < n-1; i++) {
             int posMenor = i;
             for(int j = i+1; j < n; j++) {
                 if(array[j] < array[posMenor]) posMenor = j;
-                comp++;
+                this.comp++;
             }
 
             swap(array, i, posMenor);
-            mov += 3;
+            this.mov += 3;
         }
-
-        System.out.println("Selection Padrão\nComparações: " + comp + "\nMovimentações: " + mov);
     }
 
     //Menor no início
-    public static void selectionMin(int[] array, int n) {
-
-        long comp = 0, mov = 0;
+    public void selectionMin(int[] array, int n) {
 
         for(int i = 0; i < n-1; i++) {
             int posMenor = i;
             for(int j = i+1; j < n; j++) {
                 if(array[j] < array[posMenor]) posMenor = j;
-                comp++;
+                this.comp++;
             }
 
             swap(array, i, posMenor);
-            mov += 3;
+            this.mov += 3;
         }
-
-        System.out.println("Selection Crescente menor-inicio\nComparações: " + comp + "\nMovimentações: " + mov);
     }
 
     //Maior no final
-    public static void selectionMax(int[] array, int n) {
-        
-        long comp = 0, mov = 0;
+    public void selectionMax(int[] array, int n) {
 
         for(int i = n-1; i > 0; i--) {
 
@@ -56,37 +61,31 @@ class Selection {
 
             for(int j = i-1; j >= 0; j--) {
                 if(array[j] > array[posMaior]) posMaior = j;
+                this.comp++;
             }
 
             swap(array, i, posMaior);
-            mov += 3;
+            this.mov += 3;
         }
-
-        System.out.println("Selection Crescente maior-final\nComparações: " + comp + "\nMovimentações: " + mov);
     }
 
     //Coloca os menores k elementos ordenados
-    public static void selectionPartial(int[] array, int n, int k) {
-        long comp = 0, mov = 0;
+    public void selectionPartial(int[] array, int n, int k) {
 
         for(int i = 0; i < k; i++) {
             int posMenor = i;
             for(int j = i+1; j < n; j++) {
                 if(array[j] < array[posMenor]) posMenor = j;
-                comp++;
+                this.comp++;
             }
 
             swap(array, i, posMenor);
-            mov += 3;
+            this.mov += 3;
         }
-
-        System.out.println("Partial Selection - k = " + k  + "\nComparações: " + comp + "\nMovimentações: " + mov);
     }
 
     //Maior no inicio
-    public static void selectionInverseMax(int[] array, int n) {
-
-        long comp = 0, mov = 0;
+    public void selectionInverseMax(int[] array, int n) {
 
         for(int i = 0; i < n-1; i++) {
 
@@ -94,20 +93,16 @@ class Selection {
 
             for(int j = i+1; j < n; j++) {
                 if(array[j] > array[posMaior]) posMaior = j;
-                comp++;
+                this.comp++;
             }
 
             swap(array, i, posMaior);
-            mov += 3;
+            this.mov += 3;
         }
-
-        System.out.println("Selection Decrescente maior-inicio\nComparações: " + comp + "\nMovimentações: " + mov);
     }
 
     //Menor no final
-        public static void selectionInverseMin(int[] array, int n) {
-
-        long comp = 0, mov = 0;
+        public void selectionInverseMin(int[] array, int n) {
 
         for(int i = n-1; i > 0; i--) {
             
@@ -115,14 +110,12 @@ class Selection {
 
             for(int j = i-1; j >= 0; j--) {
                 if(array[j] < array[posMenor]) posMenor = j;
-                comp++;
+                this.comp++;
             }
 
             swap(array, i, posMenor);
-            mov += 3;
+            this.mov += 3;
         }
-
-        System.out.println("Selection Decrescente menor-final\nComparações: " + comp + "\nMovimentações: " + mov);
     }
     
 }
@@ -131,11 +124,8 @@ class Main {
 
     public static void mostrar(int[] array, int n) {
         System.out.print("[");
-        for(int i = 0; i < n; i++) {
-            if(i != n-1) System.out.print(array[i] + "|");
-            else System.out.print(array[i]);
-        }
-        System.out.println("]\n");
+        for(int i = 0; i < n-1; i++) { System.out.print(array[i] + "|"); }
+        System.out.println(array[n-1] + "]\n");
     }
 
     public static void main(String[] args) {
@@ -145,13 +135,24 @@ class Main {
 
         mostrar(array, n);
 
-        Selection.selection(array, n);
-        //Selection.selectionMin(array, n);
-        //Selection.selectionMax(array, n);
-        //Selection.selectionPartial(array, n, 4);
-        //Selection.selectionInverseMax(array, n);
-        //Selection.selectionInverseMin(array, n);
+        Selection selection = new Selection();
+/*
+        selection.selectionsort(array, n);
+        System.out.println("Selection sort\nComparações: " + selection.getComp() + "\nMovimentações: " + selection.getMov());
+         
+        selection.selectionMax(array, n);
+        System.out.println("Selection Crescente maior-final\nComparações: " + selection.getComp() + "\nMovimentações: " + selection.getMov());
 
+        int k = 3;
+        selection.selectionPartial(array, n, k);
+        System.out.println("Selection Parcial - k: " + k + "\nComparações: " + selection.getComp() + "\nMovimentações: " + selection.getMov());
+        selection.selectionInverseMax(array, n);
+        System.out.println("Selection Decrescente maior-inicio\nComparações: " + selection.getComp() + "\nMovimentações: " + selection.getMov());
+
+
+        selection.selectionInverseMin(array, n);
+        System.out.println("Selection Decrescente menor-final\nComparações: " + selection.getComp() + "\nMovimentações: " + selection.getMov());
+*/
         mostrar(array, n);
     }
 }

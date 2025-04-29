@@ -1,15 +1,28 @@
 // Algorimo de Ordenação Interna INSERTION e suas variações
 class Insertion {
 
+    private int comp;
+    private int mov;
+
+    public Insertion() {
+        this.comp = 0;
+        this.mov = 0;
+    }
+
+    public int getComp() {
+        return comp;
+    }
+    public int getMov() {
+        return mov;
+    }
+
     public static void swap(int[] array, int i, int j) {
         int aux = array[i];
         array[i] = array[j];
         array[j] = aux;
     }
 
-    public static void insertion(int[] array, int n) {
-
-        long comp = 0, mov = 0;
+    public void insertionsort(int[] array, int n) {
 
         for(int i = 1; i < n; i++) {
 
@@ -19,13 +32,11 @@ class Insertion {
             while(j >= 0 && array[j] > aux) {
                 array[j+1] = array[j];
                 j--;
-                comp++; mov++;
+                this.comp++; this.mov++;
             }
             array[j+1] = aux;
-            mov++;
+            this.mov++;
         }
-
-        System.out.println("Insertion\nComparações: " + comp + "\nMovimentações: " + mov);
     }
 }
 
@@ -48,7 +59,9 @@ class Main {
 
         mostrar(array, n);
 
-        Insertion.insertion(array, n);
+        Insertion insertion = new Insertion();
+        insertion.insertionsort(array, n);
+        System.out.println("Insertion sort\nComparações: " + insertion.getComp() + "\nMovimentações: " + insertion.getMov());
 
         mostrar(array, n);
     }
