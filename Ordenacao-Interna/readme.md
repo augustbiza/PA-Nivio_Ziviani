@@ -26,3 +26,5 @@ Quando os dados a serem ordenados cabem na memória principal(RAM) utiliza-se or
 - Altera a ordem dos elemetos que possuem a mesma chave
 - Obs.: pode ter a estabilidade forçada
 - Selection
+- Shellsort
+- Quicksort

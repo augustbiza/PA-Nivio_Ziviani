@@ -22,7 +22,7 @@ class Quicksort {
         array[j] = aux;
     }
 
-
+//-------------------Quicksort com pivô no meio-------------------
     public void quicksortMeio(int[] array, int inicio, int fim) {
 
         int pivo = array[(inicio+fim)/2]; this.mov += 1;
@@ -44,6 +44,7 @@ class Quicksort {
         if(fim > i) quicksortMeio(array, i, fim);
     }
 
+//-------------------Quicksort com pivô no início-------------------
     public void quicksortInicio(int[] array, int inicio, int fim) {
 
         int pivo = array[inicio];
@@ -65,6 +66,7 @@ class Quicksort {
         if(fim > i) quicksortInicio(array, i, fim);
     }
 
+//-------------------Quicksort com pivô no Último-------------------
     public void quicksortFim(int[] array, int inicio, int fim) {
 
         int pivo = array[fim];
@@ -84,6 +86,33 @@ class Quicksort {
 
         if(inicio < j) quicksortFim(array, inicio, j);
         if(fim > i) quicksortFim(array, i, fim);
+    }
+
+//-------------------Quicksort com duas funções-------------------
+//A ordenação é feita somente por uma, a outra apenas chama ela uma vez
+    public void ordenaQuick(int[] array, int inicio, int fim) {
+
+        int pivo = array[(inicio+fim)/2]; 
+        int i = inicio, j = fim;
+
+        while(i <= j) {
+
+            while(array[i] < pivo) { i++; }
+            while(array[j] > pivo) { j--; }
+
+            if(i <= j) {
+                swap(array, i, j); 
+                i++;
+                j--;
+            }
+        }
+
+        if(inicio < j) ordenaQuick(array, inicio, j);
+        if(fim > i) ordenaQuick(array, i, fim);
+    }
+
+    public void quicksort(int[] array, int n) {
+        ordenaQuick(array, 0, n-1);
     }
 }
 
@@ -107,6 +136,8 @@ class Main {
         mostrar(array, n);
 
         Quicksort quick = new Quicksort();
+
+        /*
         quick.quicksortMeio(array, 0, n-1);
         System.out.println("Quicksort - pivô no meio\nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov() + "\n");
 
@@ -115,6 +146,10 @@ class Main {
 
         quick.quicksortFim(array, 0, n-1);
         System.out.println("Quicksort - pivô no inicio\nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov() + "\n");
+        */
+
+
+        quick.quicksort(array, n);
 
         mostrar(array, n);
     }

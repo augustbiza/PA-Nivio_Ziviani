@@ -1,11 +1,26 @@
 # Selection sort - Análise do algoritmo
-### Comparações: O(n^2)  
-### Movimentações: O(n)
+### Comparações
+#### Melhor: O(n^2)
+#### Pior: O(n^2)
+
+### Movimentações
+#### Melhor: O(n)
+#### Pior: O(n)
+
+### Estabilidade
+#### Não estável
+
 ### Vantagens
-#### Custo Linear (O(n)) para movimentações
+#### Complexidade linear de movimentações: O(n)
+
 ### Desvantagens
-#### Custo Quadrático(O(n^2)) para comparações
-#### NÃO é estável
+#### Complexidade quadrática de comparações: O(n^2)
+
+### Bom
+#### Arquivos pequenos
+### Ruim
+#### Arquivos grandes
+
 
 # Selection sort - Explicação dos códigos
 ### Java

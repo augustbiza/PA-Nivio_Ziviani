@@ -40,6 +40,9 @@ class Ordenacao {
         System.out.println("Insertion sort");
     }
 
+    //SHELLSORT - 
+
+
     //QUICKSORT -
     public static void quicksort(int[] array, int inicio, int fim) {
 
@@ -61,6 +64,8 @@ class Ordenacao {
         if(inicio < j) quicksort(array, inicio, j);
         if(fim > i) quicksort(array, i, fim);
     }
+
+    
 }
 
 class Main {

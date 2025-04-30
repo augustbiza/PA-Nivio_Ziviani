@@ -84,7 +84,8 @@ int main(void) {
     mostrar(array, tam);
 
     //selection(array, tam);
-    //insertion(array, tam); printf("Quicksort\n"); quicksort(array, 0, tam-1);
+    //insertion(array, tam); 
+    //printf("Quicksort\n"); quicksort(array, 0, tam-1);
 
     mostrar(array, tam);
 
