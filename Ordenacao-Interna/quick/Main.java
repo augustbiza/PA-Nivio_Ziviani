@@ -43,6 +43,48 @@ class Quicksort {
         if(inicio < j) quicksortMeio(array, inicio, j);
         if(fim > i) quicksortMeio(array, i, fim);
     }
+
+    public void quicksortInicio(int[] array, int inicio, int fim) {
+
+        int pivo = array[inicio];
+        int i = inicio+1, j = fim;
+
+        while(i <= j) {
+
+            while(array[i] < pivo) { i++; this.comp += 1; }
+            while(array[j] > pivo) { j--; this.comp += 1; }
+
+            if(i <= j) {
+                swap(array, i, j); this.mov += 3;
+                i++;
+                j--;
+            }
+        }
+
+        if(inicio < j) quicksortInicio(array, inicio, j);
+        if(fim > i) quicksortInicio(array, i, fim);
+    }
+
+    public void quicksortFim(int[] array, int inicio, int fim) {
+
+        int pivo = array[fim];
+        int i = inicio, j = fim-1;
+
+        while(i <= j) {
+
+            while(array[i] < pivo) { i++; this.comp += 1; }
+            while(array[j] > pivo) { j--; this.comp += 1; }
+
+            if(i <= j) {
+                swap(array, i, j); this.mov += 3;
+                i++;
+                j--;
+            }
+        }
+
+        if(inicio < j) quicksortFim(array, inicio, j);
+        if(fim > i) quicksortFim(array, i, fim);
+    }
 }
 
 
@@ -66,7 +108,13 @@ class Main {
 
         Quicksort quick = new Quicksort();
         quick.quicksortMeio(array, 0, n-1);
-        System.out.println("Quicksort - pivô no meio\nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov());
+        System.out.println("Quicksort - pivô no meio\nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov() + "\n");
+
+        quick.quicksortInicio(array, 0, n-1);
+        System.out.println("Quicksort - pivô no inicio\nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov() + "\n");
+
+        quick.quicksortFim(array, 0, n-1);
+        System.out.println("Quicksort - pivô no inicio\nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov() + "\n");
 
         mostrar(array, n);
     }

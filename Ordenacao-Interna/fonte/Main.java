@@ -84,7 +84,7 @@ class Main {
 
         //Ordenacao.selection(array, tam);
         //Ordenacao.insertion(array, tam);
-        System.out.println("Quicksort"); Ordenacao.quicksort(array, 0, tam-1);
+        //System.out.println("Quicksort"); Ordenacao.quicksort(array, 0, tam-1);
 
         mostrar(array, tam);
     }

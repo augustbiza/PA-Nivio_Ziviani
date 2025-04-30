@@ -17,7 +17,7 @@ void swap(int* a, int* b) {
     *b = aux;
 }
 
-void quicksortMeio(int* array, int inicio, int fim, int* comp, int* mov) {
+void quicksortMeio(int* array, int inicio, int fim, long* comp, long* mov) {
 
     int pivo = array[(inicio+fim)/2]; (*mov)++; //mov
     int i = inicio, j = fim;
@@ -39,10 +39,10 @@ void quicksortMeio(int* array, int inicio, int fim, int* comp, int* mov) {
     if(fim > i) quicksortMeio(array, i, fim, comp, mov);
 }
 
-void quicksortPrimeiro(int* array, int inicio, int fim, int* comp, int* mov) {
+void quicksortPrimeiro(int* array, int inicio, int fim, long* comp, long* mov) {
 
     int pivo = array[inicio]; (*mov)++; //mov
-    int i = inicio, j = fim;
+    int i = inicio+1, j = fim;
 
     while(i <= j) {
 
@@ -61,10 +61,10 @@ void quicksortPrimeiro(int* array, int inicio, int fim, int* comp, int* mov) {
     if(fim > i) quicksortPrimeiro(array, i, fim, comp, mov);
 }
 
-void quicksortUltimo(int* array, int inicio, int fim, int* comp, int* mov) {
+void quicksortUltimo(int* array, int inicio, int fim, long* comp, long* mov) {
 
     int pivo = array[fim]; (*mov)++; //mov
-    int i = inicio, j = fim;
+    int i = inicio, j = fim-1;
 
     while(i <= j) {
 
@@ -94,15 +94,17 @@ int main(void) {
 
     mostrar(array, n);
 
-    //quicksortMeio(array, 0, n-1, &comp, &mov);
-    //printf("Quicksort - pivo no meio\nComparacoes: %ld\nMovimentacoes: %ld\n", comp, mov);
+    quicksortMeio(array, 0, n-1, &comp, &mov);
+    printf("Quicksort - pivo no meio\nComparacoes: %ld\nMovimentacoes: %ld\n\n", comp, mov);
+        comp = 0; mov = 0;
 
-    //quicksortPrimeiro(array, 0, n-1, &comp, &mov);
-    //printf("Quicksort - pivo no primeiro\nComparacoes: %ld\nMovimentacoes: %ld\n", comp, mov);
+    quicksortPrimeiro(array, 0, n-1, &comp, &mov);
+    printf("Quicksort - pivo no primeiro\nComparacoes: %ld\nMovimentacoes: %ld\n\n", comp, mov);
+    comp = 0; mov = 0;
 
-    //quicksortUltimo(array, 0, n-1, &comp, &mov);
-    //printf("Quicksort - pivo no ultimo\nComparacoes: %ld\nMovimentacoes: %ld\n", comp, mov);
-
+    quicksortUltimo(array, 0, n-1, &comp, &mov);
+    printf("Quicksort - pivo no ultimo\nComparacoes: %ld\nMovimentacoes: %ld\n\n", comp, mov);
+    comp = 0; mov = 0;
 
     mostrar(array, n);
 
