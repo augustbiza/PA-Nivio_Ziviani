@@ -2,21 +2,23 @@
 ### Comparações
 #### Melhor: O(n)
 #### Pior: O(n^2)
+#### Médio: O(n^2)
 
 ### Movimentações
 #### Melhor: O(n)
 #### Pior: O(n^2)
+#### Médio: O(n^2)
 
 ### Estabilidade
 #### Estável
 
 ### Vantagens
-#### Arquivo quase ordenado: complexidade linear de comparações e movimentações: O(n)
+#### Complexidade linear em arquivos quase ordenados
 
 ### Desvantagens
-#### Arquivo todo desordenado: complexidade quadrática de comparações e movimentações: O(n^2)
+#### Complexidade quadrática em arquivos todo desordenados
 
 ### Bom
-#### Arquivos quase ordenados (exemplo: quando adiciona-se poucos elementos no arquivo)
+#### Arquivos quase ordenados
 ### Ruim
-#### Arquivos totalmente desordenados
+#### Arquivos todo desordenado

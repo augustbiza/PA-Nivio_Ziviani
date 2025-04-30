@@ -92,16 +92,16 @@ class Quicksort {
 //A ordenação é feita somente por uma, a outra apenas chama ela uma vez
     public void ordenaQuick(int[] array, int inicio, int fim) {
 
-        int pivo = array[(inicio+fim)/2]; 
+        int pivo = array[(inicio+fim)/2]; this.mov++;
         int i = inicio, j = fim;
 
         while(i <= j) {
 
-            while(array[i] < pivo) { i++; }
-            while(array[j] > pivo) { j--; }
+            while(array[i] < pivo) { i++; this.comp++; }
+            while(array[j] > pivo) { j--; this.comp++; }
 
             if(i <= j) {
-                swap(array, i, j); 
+                swap(array, i, j); this.mov += 3;
                 i++;
                 j--;
             }
@@ -130,7 +130,9 @@ class Main {
 
     public static void main(String[] args) {
 
-        int[] array = new int[]{5,2,9,7,0,8,1,4,3,6};
+        //int[] array = new int[]{5,2,9,7,0,8,1,4,3,6};     //arquivo desordenado
+        //int[] array = new int[]{0,1,2,3,4,5,6,7,8,9};     //arquivo ordenado
+        int[] array = new int[]{9,8,7,6,5,4,3,2,1,0};       //arquivo decrescente
         int n = array.length;
 
         mostrar(array, n);
@@ -150,6 +152,7 @@ class Main {
 
 
         quick.quicksort(array, n);
+        System.out.println("Quicksort \nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov() + "\n");
 
         mostrar(array, n);
     }
