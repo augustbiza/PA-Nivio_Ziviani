@@ -52,26 +52,29 @@ void insertion(int* array, int tam) {
 }
 
 //QUICKSORT
-void quicksort(int* array, int inicio, int fim) {
+void sortQuick(int* array, int inicio, int fim) {
 
     int pivo = array[(inicio+fim)/2];
-    int i = inicio, j = fim;
+    int i = inicio, f = fim;
 
-    while(i <= j) {
+    while(i <= f) {
 
-        while(array[i] < pivo) i++;
-        while(array[j] > pivo) j--;
+        while(i <= fim && array[i] < pivo) i++;
+        while(f >= inicio && array[f] > pivo) f--;
 
-        if(i <= j) {
-            swap(&array[i], &array[j]);
-            //swap(array+i, array+j);
+        if(i <= f) {
+            swap(&array[i], &array[f]);
+            //swap(array+i, array+f);
             i++;
-            j--;
+            f--;
         }
     }
 
-    if(inicio < j) quicksort(array, inicio, j);
-    if(fim > i) quicksort(array, i, fim);
+    if(inicio < f) sortQuick(array, inicio, f);
+    if(fim > i) sortQuick(array, i, fim);
+}
+void quicksort(int* array, int tam) {
+    sortQuick(array, 0, tam-1);
 }
 
 
@@ -85,7 +88,7 @@ int main(void) {
 
     //selection(array, tam);
     //insertion(array, tam); 
-    //printf("Quicksort\n"); quicksort(array, 0, tam-1);
+    printf("Quicksort\n"); quicksort(array, tam);
 
     mostrar(array, tam);
 

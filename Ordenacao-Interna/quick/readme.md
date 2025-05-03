@@ -16,9 +16,9 @@
 #### Complexidade MÉDIA linear-algoritmica: O(n*Log(n))
 
 ### Desvantagens
-#### Complexidade quadrática quando o pivô é o MENOR ou MAIOR elemento do arquivo 
+#### Complexidade quadrática quando o pivô escolhido for o MENOR ou MAIOR elemento do arquivo 
 
 ### Bom
-#### 
+#### Quando não se sabe a ordenação atual do arquivo, pois a média é O(n*Log(n))
 ### Ruim
-#### 
+#### Escolha errada do pivo(menor ou maior)

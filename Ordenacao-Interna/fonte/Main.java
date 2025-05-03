@@ -21,6 +21,7 @@ class Ordenacao {
 
         System.out.println("Selection sort");
     }
+    //--------------------------
 
     //INSERTION - 
     public static void insertion(int[] array, int tam) {
@@ -39,32 +40,42 @@ class Ordenacao {
         }
         System.out.println("Insertion sort");
     }
+    //-----------------------------------
 
     //SHELLSORT - 
 
+    //----------------------------------
 
     //QUICKSORT -
-    public static void quicksort(int[] array, int inicio, int fim) {
+    public static void sortQuick(int[] array, int inicio, int fim) {
 
+        int i = inicio, f = fim;
         int pivo = array[(inicio+fim)/2];
-        int i = inicio, j = fim;
 
-        while(i <= j) {
+        while(i <= f) {
 
-            while(array[i] < pivo) i++;
-            while(array[j] > pivo) j--;
+            while(i <= fim && array[i] < pivo) i++;
+            while(f >= inicio && array[f] > pivo) f--;
 
-            if(i <= j) {
-                swap(array, i, j);
+            if(i <= f) {
+                swap(array, i, f);
                 i++;
-                j--;
+                f--;
             }
         }
 
-        if(inicio < j) quicksort(array, inicio, j);
-        if(fim > i) quicksort(array, i, fim);
+        if(inicio < f) sortQuick(array, inicio, f);
+        if(i < fim) sortQuick(array, i, fim);
     }
 
+    public static void quicksort(int[] array, int n) {
+        sortQuick(array, 0, n-1);
+    }
+    //------------------------------------------
+
+    //MERGE
+
+    //COUNTSORT
     
 }
 
@@ -89,7 +100,7 @@ class Main {
 
         //Ordenacao.selection(array, tam);
         //Ordenacao.insertion(array, tam);
-        //System.out.println("Quicksort"); Ordenacao.quicksort(array, 0, tam-1);
+        System.out.println("Quicksort"); Ordenacao.quicksort(array, tam);
 
         mostrar(array, tam);
     }
