@@ -11,6 +11,7 @@
 #### Não estável
 
 ### Vantagens
+#### In Situ
 #### Complexidade linear de movimentações: O(n)
 
 ### Desvantagens

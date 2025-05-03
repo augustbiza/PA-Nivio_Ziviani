@@ -98,9 +98,11 @@ class Main {
         System.out.println("Array Inicial");
         mostrar(array, tam);
 
-        //Ordenacao.selection(array, tam);
-        //Ordenacao.insertion(array, tam);
-        System.out.println("Quicksort"); Ordenacao.quicksort(array, tam);
+        Ordenacao colection = new Ordenacao();
+
+        //colection.selection(array, tam);
+        //colection.insertion(array, tam);
+        System.out.println("Quicksort"); colection.quicksort(array, tam);
 
         mostrar(array, tam);
     }

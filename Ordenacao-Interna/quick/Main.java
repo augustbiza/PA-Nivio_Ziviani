@@ -96,7 +96,48 @@ class Quicksort {
 
         if(i < fim) quicksortFim(array, i, fim);
         if(f > inicio) quicksortFim(array, inicio, f);
-    }        
+    }
+
+//----------------Quicksort pivô Mediana-----------------------
+    public int mediana(int a, int b, int c) {
+        int med = a;
+
+        if(a > b && a > c) {
+            if(b > c) med = b;
+            else med = c;
+        }
+        else if(b > a && b > c) {
+            if(a > c) med = a;
+            else med = c;
+        }
+        else if(c > a && c > b) {
+            if(a > b) med = a;
+            else med = b;
+        }
+
+        return med;
+    }
+
+    public void quicksortMed(int[] array, int inicio, int fim) {
+
+        int i = inicio, f = fim, med = mediana(array[inicio], array[(inicio+fim)/2], array[fim]);
+        int pivo = array[med];   this.mov++;
+
+        while(i <= f) {
+
+            while(i <= fim && array[i] < pivo) { i++; this.comp++;}
+            while(f >= inicio && array[f] > pivo) { f--; this.comp++;}
+
+            if(i <= f) {
+                swap(array, i, f);  this.mov += 3;
+                i++;
+                f--;
+            }
+        }
+
+        if(i < fim) quicksortMed(array, i, fim);
+        if(f > inicio) quicksortMed(array, inicio, f);
+    }
 }
 
 
@@ -113,23 +154,30 @@ class Main {
 
     public static void main(String[] args) {
 
-        int[] array = new int[]{5,2,9,7,0,8,1,4,3,6};     //arquivo desordenado
+        //int[] array = new int[]{5,2,9,7,3,8,1,4,0,6};     //arquivo desordenado
         //int[] array = new int[]{0,1,2,3,4,5,6,7,8,9};     //arquivo ordenado
         //int[] array = new int[]{9,8,7,6,5,4,3,2,1,0};     //arquivo decrescente
+        //int[] array = new int[]{5,2,9,7,0,8,1,4,3,6};     //pivo menor
+        //int[] array = new int[]{5,2,0,7,9,8,1,4,3,6};     //pivo maior
+
         int n = array.length;
 
         mostrar(array, n);
 
         Quicksort quick = new Quicksort();
 
-        //quick.quicksort(array, n);
-        //System.out.println("Quicksort \nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov() + "\n");
+
+        quick.quicksort(array, n);
+        System.out.println("Quicksort \nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov() + "\n");
+
+        //quick.quicksortInicio(array, 0, n-1);
+        //System.out.println("Quicksort - pivô Mediana\nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov() + "\n");
 
         //quick.quicksortInicio(array, 0, n-1);
         //System.out.println("Quicksort - pivô no inicio\nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov() + "\n");
         
-        quick.quicksortFim(array, 0, n-1);
-        System.out.println("Quicksort - pivô no fim\nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov() + "\n");
+        //quick.quicksortFim(array, 0, n-1);
+        //System.out.println("Quicksort - pivô no fim\nComparações: " + quick.getComp() + "\nMovimentações: " + quick.getMov() + "\n");
         
         mostrar(array, n);
     }

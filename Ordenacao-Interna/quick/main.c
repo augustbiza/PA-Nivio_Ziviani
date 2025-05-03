@@ -94,6 +94,11 @@ void quicksortUltimo(int* array, int inicio, int fim, long* comp, long* mov) {
 int main(void) {
 
     int array[] = {5,2,9,7,0,8,1,4,3,6};
+    //int array[] = {0,1,2,3,4,5,6,7,8,9};      //arquivo ordenado
+    //int array[] = {9,8,7,6,5,4,3,2,1,0};      //arquivo decrescente
+    //int array[] = {5,2,9,7,0,8,1,4,3,6};      //pivo menor
+    //int array[] = {5,2,0,7,9,8,1,4,3,6};      //pivo maior
+
     int n = sizeof(array)/sizeof(array[0]);
 
     long comp = 0, mov = 0;

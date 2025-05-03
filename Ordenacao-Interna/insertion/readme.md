@@ -13,6 +13,7 @@
 #### Estável
 
 ### Vantagens
+#### In Situ
 #### Complexidade linear em arquivos quase ordenados
 
 ### Desvantagens

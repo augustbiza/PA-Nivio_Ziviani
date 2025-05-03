@@ -4,10 +4,10 @@ Quando os dados a serem ordenados cabem na memória principal(RAM) utiliza-se or
 ## Tipos
 - Selection / Selection Parcial
 - Insertion / Insertion Parcial
-- Bubble
-- Quicksort / Quicksort Parcial
-- Mergesort
 - Shellsort
+- Quicksort / Quicksort Parcial
+- Bubble
+- Mergesort
 - Heapsort / Heapsort Parcial
 
 ## Classificação: quando usar
@@ -27,4 +27,13 @@ Quando os dados a serem ordenados cabem na memória principal(RAM) utiliza-se or
 - Obs.: pode ter a estabilidade forçada
 - Selection
 - Shellsort
+- Quicksort
+
+## Classificação: In Situ x Out Situ
+### In Situ
+Não requerem memória extra parar ordenar o arquivo
+- Selection
+- Insertion
+### Out Situ
+Requerem menória extra para ordenar o arquivo
 - Quicksort
