@@ -10,6 +10,7 @@ class Main {
         System.out.println();
     }
 
+    //PAI
     public static boolean temPai(int[] arvore, int pos) {
 
         if(pos == 0) return false;
@@ -22,6 +23,7 @@ class Main {
         return pai;
     }
 
+    //FILHOS
     public static boolean temFilhoEsquerda(int[] arvore, int pos) {
 
         int n = arvore.length;
@@ -42,6 +44,7 @@ class Main {
         return filho;
     }
 
+    //MOSTRAR PAI E FILHOS
     public static void mostrarElemento(int[] arvore, int i) {
 
         int n = arvore.length;
@@ -59,7 +62,8 @@ class Main {
         else System.out.println("Sem Filhos(Folha)");
     }
 
-    public static int pegarElemento(int[] arvore, int elem) {
+    //PEGAR POSIÇÃO DO ELEMENTO
+    public static int pegarPosElemento(int[] arvore, int elem) {
         int pos = 0;
 
         for(int i = 0; i < arvore.length; i++) {
@@ -69,6 +73,7 @@ class Main {
         return pos;
     }
 
+    //PEGAR ELEMENTO
     public static int escolherElemento(int[] arvore, int n) {
         Scanner scan = new Scanner(System.in);
 
@@ -102,7 +107,7 @@ class Main {
 
         int elem = escolherElemento(arvore, n);
         
-        int pos = pegarElemento(arvore, elem);
+        int pos = pegarPosElemento(arvore, elem);
 
         mostrarElemento(arvore, pos);
 
